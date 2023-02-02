@@ -10,5 +10,8 @@
 - extend the endpoints base
 - etc.
 
-#### Postman directory to test apps. Fork it
-Link:
+#### Use Postman to use endpoints
+
+#### Important notes
+- When you are launching the Main app, you would create new and empty instance of the database. So, you need to launch /register endpoint first and put the token into Authorization header of other endpoints.
+- Postman endpoints for testing ease are sent in Telegram
