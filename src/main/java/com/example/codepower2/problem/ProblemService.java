@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 public class ProblemService {
     private final ProblemRepository problemRepository;
 
-    public Problem getProblemDetails(int problemId) {
-        Problem problem = problemRepository.findById(problemId)
-                .orElseThrow(() -> new IllegalStateException("Client with id " + problemId + " does not exist"));
+    public Problem getProblem(Integer problemId) {
+        Problem problem = problemRepository.findProblemById(problemId)
+                .orElseThrow(() -> new IllegalStateException("Problem with id " + problemId + " does not exist"));
 
         return problem;
     }
