@@ -2,7 +2,6 @@ package com.example.codepower2.problem;
 
 import com.example.codepower2.entities.problem.Problem;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,14 +11,13 @@ public class ProblemController {
 
     private final ProblemService problemService;
 
-    @GetMapping
-    public ResponseEntity<String> sayHello() {
-        return ResponseEntity.ok("Hello from secured endpoint");
+    @GetMapping("/{problemId}")
+    public Problem getProblem(@PathVariable Integer problemId) {
+        return problemService.getProblem(problemId);
     }
 
     @PostMapping("/")
     public void addProblem(@RequestBody Problem problem) {
-        System.out.println("Problem: " +  problem);
         problemService.addProblem(problem);
     }
 }
