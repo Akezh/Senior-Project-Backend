@@ -22,6 +22,5 @@ public class Problem {
     private Difficulty difficulty;
     private String description;
     private String solution;
-    private String testCases; // Should be List<Pair<String,String>> (List of inputs and outputs);
 
 }
