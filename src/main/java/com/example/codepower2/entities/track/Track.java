@@ -1,5 +1,6 @@
 package com.example.codepower2.entities.track;
 
+import com.example.codepower2.entities.problem.Difficulty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,5 +20,7 @@ public class Track {
     private String title;
     private String description;
     private String category; // Should be String[] (multiple categories)
+    @Enumerated(EnumType.STRING)
+    private Difficulty difficulty;
     private Integer numberOfProblems;
 }

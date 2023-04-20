@@ -13,6 +13,7 @@ public class AuthenticationResponse {
     private String username;
     private String fullname;
     private String email;
+    private String userType;
 
     private String token;
 }

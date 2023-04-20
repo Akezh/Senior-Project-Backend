@@ -5,11 +5,16 @@ import com.example.codepower2.entities.problem.ProblemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ProblemService {
     private final ProblemRepository problemRepository;
 
+    public List<Problem> getAllProblems() {
+        return problemRepository.findAll();
+    }
     public Problem getProblem(Integer problemId) {
         Problem problem = problemRepository.findProblemById(problemId)
                 .orElseThrow(() -> new IllegalStateException("Problem with id " + problemId + " does not exist"));

@@ -1,5 +1,6 @@
 package com.example.codepower2.entities.problem;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,4 +24,7 @@ public class Problem {
     private String description;
     private String solution;
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @Transient
+    private Boolean solved;
 }

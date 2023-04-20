@@ -14,4 +14,6 @@ public interface TrackRepository extends JpaRepository<Track, Integer> {
     Optional<List<Track>> getTracks();
     @Query("SELECT t FROM Track t WHERE t.id = ?1")
     Optional<Track> findTrackById(Integer id);
+
+    void deleteById(Integer trackId);
 }

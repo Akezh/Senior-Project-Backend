@@ -12,4 +12,6 @@ public interface TrackProblemRepository extends JpaRepository<TrackProblem, Inte
 
     @Query(value = "SELECT p FROM Problem p JOIN TrackProblem t ON p.id = t.problemId WHERE t.trackId = ?1")
     List<Problem> findProblemsByTrackId(Integer trackId);
+
+    void deleteAllByTrackIdAndProblemId(Integer trackId, Integer problemId);
 }

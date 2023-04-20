@@ -7,5 +7,7 @@ import java.util.List;
 
 @Repository
 public interface SubmissionRepository extends JpaRepository<Submission, Integer> {
-    List<Submission> findAllByUserIdAndAndProblemId(Integer userId, Integer problemId);
+    List<Submission> findAllByUserIdAndProblemId(Integer userId, Integer problemId);
+
+    List<Submission> findAllByUserIdAndProblemIdAndVerdict(Integer userId, Integer problemId, String verdict);
 }

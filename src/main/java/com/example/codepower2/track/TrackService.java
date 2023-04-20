@@ -35,4 +35,8 @@ public class TrackService {
 
         trackRepository.save(track);
     }
+
+    public void deleteTrack(Integer trackId) {
+        trackRepository.deleteById(trackId);
+    }
 }
