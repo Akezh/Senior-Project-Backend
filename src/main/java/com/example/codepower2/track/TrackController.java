@@ -18,6 +18,7 @@ import java.util.*;
 @RestController
 @RequestMapping("/api/v1/track")
 @RequiredArgsConstructor
+@CrossOrigin
 public class TrackController {
 
     private final TrackService trackService;

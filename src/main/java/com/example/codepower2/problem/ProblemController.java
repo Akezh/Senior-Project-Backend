@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/problem")
 @RequiredArgsConstructor
+@CrossOrigin
 public class ProblemController {
 
     private final ProblemService problemService;

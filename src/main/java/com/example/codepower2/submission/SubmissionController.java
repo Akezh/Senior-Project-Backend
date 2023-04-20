@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/submission")
 @RequiredArgsConstructor
+@CrossOrigin
 public class SubmissionController {
 
     private final SubmissionRepository submissionRepository;
