@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -24,9 +25,15 @@ public class SubmissionController {
     }
 
     @PostMapping("/")
-    public void save(@RequestBody Submission submission,
+    public Submission save(@RequestBody Submission submission,
                      @AuthenticationPrincipal User user) {
         submission.userId = user.getId();
-        submissionRepository.save(submission);
+        if (submission.verdict == null) {
+            submission.verdict = "testing";
+        }
+        if (submission.date == null) {
+            submission.date = new Date();
+        }
+        return submissionRepository.save(submission);
     }
 }

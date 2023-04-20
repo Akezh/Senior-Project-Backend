@@ -2,6 +2,8 @@ package com.example.codepower2.entities.submission;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "test")
 public class Submission {
@@ -24,4 +26,7 @@ public class Submission {
 
     @Column(name = "verdict")
     public String verdict;
+
+    @Column(name = "date")
+    public Date date;
 }

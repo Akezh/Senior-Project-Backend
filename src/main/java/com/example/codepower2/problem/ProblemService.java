@@ -22,7 +22,7 @@ public class ProblemService {
         return problem;
     }
 
-    public void addProblem(Problem problem) {
+    public Problem addProblem(Problem problem) {
         if (problem.getTitle() == null
                 || problem.getDescription() == null
                 || problem.getCategory() == null
@@ -30,6 +30,6 @@ public class ProblemService {
             throw new IllegalStateException("Some important fields of the problem are empty");
         }
 
-        problemRepository.save(problem);
+        return problemRepository.save(problem);
     }
 }
