@@ -2,6 +2,7 @@ package com.example.codepower2.track;
 
 import com.example.codepower2.entities.track.Track;
 import com.example.codepower2.entities.track.TrackRepository;
+import com.example.codepower2.entities.trackproblem.TrackProblemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +12,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TrackService {
     private final TrackRepository trackRepository;
+    private final TrackProblemRepository trackProblemRepository;
 
     public List<Track> getTracks() {
         List<Track> tracks = trackRepository.getTracks()
-                .orElseThrow(() -> new IllegalStateException("Tracks do not exist"));
+                .orElseThrow(() -> new IllegalStateException("Tracks do not exist"))
+                .stream().peek(track -> track.setNumberOfProblems(trackProblemRepository.findProblemsByTrackId(track.getId()).size())).toList();
 
         return tracks;
     }

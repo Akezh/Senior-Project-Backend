@@ -27,6 +27,9 @@ public class Submission {
     @Column(name = "verdict")
     public String verdict;
 
+    @Column(name = "verdict_message", columnDefinition = "TEXT")
+    public String verdictMessage;
+
     @Column(name = "date")
     public Date date;
 }
