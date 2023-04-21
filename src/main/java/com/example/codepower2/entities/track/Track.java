@@ -22,5 +22,4 @@ public class Track {
     private String category; // Should be String[] (multiple categories)
     @Enumerated(EnumType.STRING)
     private Difficulty difficulty;
-    private Integer numberOfProblems;
 }

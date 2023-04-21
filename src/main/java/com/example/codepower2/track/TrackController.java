@@ -52,7 +52,9 @@ public class TrackController {
             @PathVariable Integer trackId,
             @AuthenticationPrincipal User user) {
         return trackProblemRepository.findProblemsByTrackId(trackId).stream()
-                .peek(problem -> problem.setSolved(!submissionRepository.findAllByUserIdAndProblemIdAndVerdict(user.getId(), problem.getId(), "accepted").isEmpty()))
+                .peek(problem ->
+                        problem.setSolved(user != null && !submissionRepository.findAllByUserIdAndProblemIdAndVerdict(user.getId(), problem.getId(), "accepted").isEmpty())
+                )
                 .toList();
     }
 
