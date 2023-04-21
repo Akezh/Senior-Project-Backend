@@ -15,11 +15,13 @@ public class TestCaseController {
 
     private final TestCaseRepository testCaseRepository;
 
+    @CrossOrigin
     @GetMapping("/problem/{problemId}")
     public List<TestCase> getTests(@PathVariable Integer problemId) {
         return testCaseRepository.findTestCasesByProblemId(problemId);
     }
 
+    @CrossOrigin
     @PostMapping("/")
     public void save(@RequestBody TestCase testCase) {
         testCaseRepository.save(testCase);

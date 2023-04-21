@@ -14,22 +14,23 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/problem")
 @RequiredArgsConstructor
-@CrossOrigin
 public class ProblemController {
 
     private final ProblemService problemService;
 
     private final TestCaseRepository testCaseRepository;
 
+    @CrossOrigin
     @GetMapping("")
     public List<Problem> getAllProblems() {
         return problemService.getAllProblems();
     }
+    @CrossOrigin
     @GetMapping("/{problemId}")
     public Problem getProblem(@PathVariable Integer problemId) {
         return problemService.getProblem(problemId);
     }
-
+    @CrossOrigin
     @PostMapping("/")
     public ResponseEntity<Object> addProblem(@RequestBody ProblemCreate problemCreate) {
         Problem problem = Problem.builder()

@@ -13,11 +13,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/submission")
 @RequiredArgsConstructor
-@CrossOrigin
 public class SubmissionController {
 
     private final SubmissionRepository submissionRepository;
 
+    @CrossOrigin
     @GetMapping("/problem/{problemId}")
     public List<Submission> get(
             @PathVariable Integer problemId,
@@ -25,6 +25,7 @@ public class SubmissionController {
         return submissionRepository.findAllByUserIdAndProblemId(user.getId(), problemId);
     }
 
+    @CrossOrigin
     @PostMapping("/")
     public Submission save(@RequestBody Submission submission,
                      @AuthenticationPrincipal User user) {
