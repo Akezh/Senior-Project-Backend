@@ -47,7 +47,7 @@ public class SubmissionController {
         }
 
         // Sending submission to judge system.
-        String TARGET_URL = "http://oj:8000/api/v1/auth/register";
+        String TARGET_URL = "http://oj:8000/evaluate/";
 
         URI targetURI = new URI(TARGET_URL);
 
