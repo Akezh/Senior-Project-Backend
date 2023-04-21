@@ -8,6 +8,8 @@ services:
     ports:
       - "8080:8080"
     container_name: app
+    depends_on:
+      - db
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
       - SPRING_DATASOURCE_USERNAME=postgres
@@ -29,6 +31,8 @@ services:
   oj:
     image: 'krauchman/sp:oj'
     container_name: oj
+    depends_on:
+      - db
     ports:
       - "8000:8000"
     environment:
@@ -40,6 +44,8 @@ services:
     privileged: true
     environment:
       - DB_HOST=db
+    depends_on:
+      - db
 
 volumes:
   pgdata:
