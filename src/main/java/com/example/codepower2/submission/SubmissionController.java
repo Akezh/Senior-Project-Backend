@@ -26,7 +26,7 @@ public class SubmissionController {
     }
 
     @CrossOrigin
-    @PostMapping("/")
+    @PostMapping()
     public Submission save(@RequestBody Submission submission,
                      @AuthenticationPrincipal User user) {
         submission.userId = user.getId();

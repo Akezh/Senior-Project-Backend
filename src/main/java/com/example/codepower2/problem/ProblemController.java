@@ -21,7 +21,7 @@ public class ProblemController {
     private final TestCaseRepository testCaseRepository;
 
     @CrossOrigin
-    @GetMapping("")
+    @GetMapping()
     public List<Problem> getAllProblems() {
         return problemService.getAllProblems();
     }
@@ -31,7 +31,7 @@ public class ProblemController {
         return problemService.getProblem(problemId);
     }
     @CrossOrigin
-    @PostMapping("/")
+    @PostMapping()
     public ResponseEntity<Object> addProblem(@RequestBody ProblemCreate problemCreate) {
         Problem problem = Problem.builder()
                 .category(problemCreate.getCategory())

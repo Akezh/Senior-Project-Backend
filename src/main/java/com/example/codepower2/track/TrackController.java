@@ -38,7 +38,7 @@ public class TrackController {
         return trackService.getTrackById(trackId);
     }
     @CrossOrigin
-    @PostMapping("/")
+    @PostMapping()
     public void addTrack(@RequestBody Track track) {
         trackService.addTrack(track);
     }

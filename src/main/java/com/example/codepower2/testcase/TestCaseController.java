@@ -21,7 +21,7 @@ public class TestCaseController {
     }
 
     @CrossOrigin
-    @PostMapping("/")
+    @PostMapping()
     public void save(@RequestBody TestCase testCase) {
         testCaseRepository.save(testCase);
     }
