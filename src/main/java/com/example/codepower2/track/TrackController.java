@@ -55,7 +55,7 @@ public class TrackController {
             @AuthenticationPrincipal User user) {
         return trackProblemRepository.findProblemsByTrackId(trackId).stream()
                 .peek(problem ->
-                        problem.setSolved(user != null && !submissionRepository.findAllByUserIdAndProblemIdAndVerdict(user.getId(), problem.getId(), "accepted").isEmpty())
+                        problem.setSolved(user != null && !submissionRepository.findAllByUserIdAndProblemIdAndVerdict(user.getId(), problem.getId(), "Accepted").isEmpty())
                 )
                 .toList();
     }
