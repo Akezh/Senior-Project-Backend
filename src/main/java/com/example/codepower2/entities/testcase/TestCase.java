@@ -23,9 +23,9 @@ public class TestCase implements Serializable {
     @Column(name = "problem_id")
     public Integer problemId;
 
-    @Column(name = "input")
+    @Column(name = "input", columnDefinition = "TEXT")
     public String input;
 
-    @Column(name = "output")
+    @Column(name = "output", columnDefinition = "TEXT")
     public String output;
 }

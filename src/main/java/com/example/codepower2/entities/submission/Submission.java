@@ -21,7 +21,7 @@ public class Submission {
     @Column(name = "language")
     public String language;
 
-    @Column(name = "code")
+    @Column(name = "code", columnDefinition = "TEXT")
     public String code;
 
     @Column(name = "verdict")

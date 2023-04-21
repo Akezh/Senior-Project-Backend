@@ -21,8 +21,14 @@ public class Problem {
     private String category; // Should be String[] (multiple categories)
     @Enumerated(EnumType.STRING)
     private Difficulty difficulty;
+
+    @Column(columnDefinition = "TEXT")
     private String description;
+
+    @Column(columnDefinition = "TEXT")
     private String statement;
+
+    @Column(columnDefinition = "TEXT")
     private String solution;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
