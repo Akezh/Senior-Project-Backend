@@ -23,8 +23,8 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=postgres
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+#    volumes:
+#      - pgdata:/var/lib/postgresql/data
 
   oj:
     image: 'krauchman/sp:oj'
@@ -34,8 +34,8 @@ services:
     environment:
       - DB_HOST=db
 
-volumes:
-  pgdata:
+#volumes:
+#  pgdata:
 
 #  oj-worker:
 #    image: 'krauchman/sp:oj-worker'
