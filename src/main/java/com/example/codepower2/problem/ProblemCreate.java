@@ -18,5 +18,6 @@ public class ProblemCreate implements Serializable {
     private Difficulty difficulty;
     private String description;
     private String solution;
+    private String statement;
     private List<TestCaseCreate> testCases;
 }

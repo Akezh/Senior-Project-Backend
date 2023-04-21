@@ -22,6 +22,7 @@ public class Problem {
     @Enumerated(EnumType.STRING)
     private Difficulty difficulty;
     private String description;
+    private String statement;
     private String solution;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)

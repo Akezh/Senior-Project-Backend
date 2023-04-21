@@ -38,6 +38,7 @@ public class ProblemController {
                 .difficulty(problemCreate.getDifficulty())
                 .title(problemCreate.getTitle())
                 .solution(problemCreate.getSolution())
+                .statement(problemCreate.getStatement())
                 .build();
         problem = problemService.addProblem(problem);
 
