@@ -3,10 +3,19 @@ package com.example.codepower2.submission;
 import com.example.codepower2.entities.submission.Submission;
 import com.example.codepower2.entities.submission.SubmissionRepository;
 import com.example.codepower2.entities.user.User;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+import java.io.Serializable;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Date;
 import java.util.List;
 
@@ -28,7 +37,7 @@ public class SubmissionController {
     @CrossOrigin
     @PostMapping()
     public Submission save(@RequestBody Submission submission,
-                     @AuthenticationPrincipal User user) {
+                     @AuthenticationPrincipal User user) throws URISyntaxException, IOException, InterruptedException {
         submission.userId = user.getId();
         if (submission.verdict == null) {
             submission.verdict = "testing";
@@ -36,6 +45,28 @@ public class SubmissionController {
         if (submission.date == null) {
             submission.date = new Date();
         }
-        return submissionRepository.save(submission);
+
+        // Sending submission to judge system.
+        String TARGET_URL = "http://oj:8000/api/v1/auth/register";
+
+        URI targetURI = new URI(TARGET_URL);
+
+        String postBody = String.format("{\"problemId\": %s, \"language\": \"%s\", \"code\": \"%s\", \"user_id\": %s}",
+                submission.problemId, submission.language, submission.code, submission.userId);
+
+        HttpRequest httpRequest = HttpRequest.newBuilder()
+                .uri(targetURI)
+                .POST(HttpRequest.BodyPublishers.ofString(postBody))
+                .header("Content-Type", "application/json")
+                .build();
+
+        HttpClient httpClient = HttpClient.newHttpClient();
+        HttpResponse<String> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+
+        if (response.statusCode() != 200) {
+            throw new RuntimeException("Judge system returned status code = " + response.statusCode());
+        }
+
+        return submission;
     }
 }

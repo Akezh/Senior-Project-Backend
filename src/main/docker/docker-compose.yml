@@ -22,3 +22,24 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  oj:
+    image: 'krauchman/sp:oj'
+    container_name: oj
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=db
+
+volumes:
+  pgdata:
+
+#  oj-worker:
+#    image: 'krauchman/sp:oj-worker'
+#    container_name: oj-worker
+#    privileged: true
+#    environment:
+#      - DB_HOST=db
