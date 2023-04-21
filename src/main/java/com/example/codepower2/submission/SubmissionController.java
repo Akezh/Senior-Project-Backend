@@ -51,7 +51,7 @@ public class SubmissionController {
 
         URI targetURI = new URI(TARGET_URL);
 
-        String postBody = String.format("{\"problemId\": %s, \"language\": \"%s\", \"code\": \"%s\", \"user_id\": %s}",
+        String postBody = String.format("{\"problemId\": %s, \"language\": \"%s\", \"code\": \"%s\", \"userId\": %s}",
                 submission.problemId, submission.language, submission.code, submission.userId);
 
         System.out.println("Sending json body: " + postBody);
