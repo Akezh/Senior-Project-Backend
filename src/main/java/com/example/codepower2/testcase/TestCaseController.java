@@ -10,7 +10,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/test")
 @RequiredArgsConstructor
-@CrossOrigin
 public class TestCaseController {
 
     private final TestCaseRepository testCaseRepository;

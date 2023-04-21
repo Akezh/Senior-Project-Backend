@@ -18,7 +18,6 @@ import java.util.*;
 @RestController
 @RequestMapping("/api/v1/track")
 @RequiredArgsConstructor
-@CrossOrigin
 public class TrackController {
 
     private final TrackService trackService;
@@ -27,26 +26,29 @@ public class TrackController {
 
     private final SubmissionRepository submissionRepository;
 
+    @CrossOrigin
     @GetMapping()
     public List<Track> getTracks() {
         return trackService.getTracks();
     }
 
+    @CrossOrigin
     @GetMapping("/{trackId}")
     public Track getTrackById(@PathVariable Integer trackId) {
         return trackService.getTrackById(trackId);
     }
-
+    @CrossOrigin
     @PostMapping("/")
     public void addTrack(@RequestBody Track track) {
         trackService.addTrack(track);
     }
 
+    @CrossOrigin
     @DeleteMapping("/{trackId}")
     public void deleteTrack(@PathVariable Integer trackId) {
         trackService.deleteTrack(trackId);
     }
-
+    @CrossOrigin
     @GetMapping("/{trackId}/problems")
     public List<Problem> getTrackProblems(
             @PathVariable Integer trackId,
@@ -58,6 +60,7 @@ public class TrackController {
                 .toList();
     }
 
+    @CrossOrigin
     @PostMapping("/problem")
     public ResponseEntity<Object> addTrackProblem(@RequestBody TrackProblem trackProblem) {
 
@@ -68,6 +71,7 @@ public class TrackController {
         return new ResponseEntity<>(confirmationResponse, HttpStatus.OK);
     }
 
+    @CrossOrigin
     @PostMapping("{trackId}/problem/{problemId}/delete")
     @Transactional
     public ResponseEntity<Object> deleteTrackProblem(
