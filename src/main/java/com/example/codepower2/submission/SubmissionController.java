@@ -46,7 +46,7 @@ public class SubmissionController {
             submission.date = new Date();
         }
 
-        submission = submissionRepository.save(submission)
+        submission = submissionRepository.save(submission);
 
         // Sending submission to judge system.
         String TARGET_URL = "http://oj:8000/evaluate/";
