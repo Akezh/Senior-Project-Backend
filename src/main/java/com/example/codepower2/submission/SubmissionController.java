@@ -40,19 +40,20 @@ public class SubmissionController {
                      @AuthenticationPrincipal User user) throws URISyntaxException, IOException, InterruptedException {
         submission.userId = user.getId();
         if (submission.verdict == null) {
-            submission.verdict = "testing";
+            submission.verdict = "In queue";
         }
         if (submission.date == null) {
             submission.date = new Date();
         }
+
+        submission = submissionRepository.save(submission)
 
         // Sending submission to judge system.
         String TARGET_URL = "http://oj:8000/evaluate/";
 
         URI targetURI = new URI(TARGET_URL);
 
-        String postBody = String.format("{\"problemId\": %s, \"language\": \"%s\", \"code\": \"%s\", \"userId\": %s}",
-                submission.problemId, submission.language, submission.code, submission.userId);
+        String postBody = String.format("{\"submissionId\": %s}", submission.id);
 
         System.out.println("Sending json body: " + postBody);
 
